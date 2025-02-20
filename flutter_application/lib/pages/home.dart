@@ -1,7 +1,6 @@
-import 'dart:async';
-
+//import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_application/pages/map_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,7 +21,7 @@ class HomePage extends StatelessWidget {
           _bottomButton()
         ],
       ),
-      bottomNavigationBar: _bottomBar(),
+      bottomNavigationBar: _bottomBar(context),
 
     );
   }
@@ -34,7 +33,7 @@ class HomePage extends StatelessWidget {
         );
   }
 
-  BottomAppBar _bottomBar() {
+  BottomAppBar _bottomBar(BuildContext context) {
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
       child: Row(
@@ -45,7 +44,10 @@ class HomePage extends StatelessWidget {
             child: const Icon(Icons.home),
           ),
           FloatingActionButton(
-            onPressed: (){print('map');},
+            onPressed: (){Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MapPage()),
+              );},
             child: const Icon(Icons.map),
           ),
           FloatingActionButton(

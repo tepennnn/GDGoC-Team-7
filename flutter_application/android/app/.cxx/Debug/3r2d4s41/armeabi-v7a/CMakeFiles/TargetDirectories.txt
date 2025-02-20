@@ -1,0 +1,2 @@
+/Users/mia/team 7 mia/GDGoC-Team-7/flutter_application/android/app/.cxx/Debug/3r2d4s41/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/mia/team 7 mia/GDGoC-Team-7/flutter_application/android/app/.cxx/Debug/3r2d4s41/armeabi-v7a/CMakeFiles/rebuild_cache.dir
