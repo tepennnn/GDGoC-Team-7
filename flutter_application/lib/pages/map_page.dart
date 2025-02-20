@@ -16,26 +16,12 @@ class _MapPageState extends State<MapPage>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: //Column(
-        //crossAxisAlignment: CrossAxisAlignment.center,
-        //children: [
+      body: 
           GoogleMap(initialCameraPosition: CameraPosition(
         target: _pGooglePlex, 
         zoom:15)),
-         // _bottomButton()
-        //]
+          bottomNavigationBar: _bottomBar(context),
       );
-      //  bottomNavigationBar: _bottomBar(context),
-          
-        
-    //);
-  }
-
-/*  FloatingActionButton _bottomButton() {
-    return FloatingActionButton(
-          onPressed: (){print('menu');},
-          child: const  Icon(Icons.add),
-        );
   }
 
   BottomAppBar _bottomBar(BuildContext context) {
@@ -62,7 +48,5 @@ class _MapPageState extends State<MapPage>{
         ],
       ),
     );
-  }*/
-
-
+  }
 }
