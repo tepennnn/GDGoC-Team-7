@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_application/pages/home.dart';
 
+
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
 
@@ -9,6 +10,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: topBar(context),
+
         body: Column(
           children: [
             SearchBar(autoFocus: true),
