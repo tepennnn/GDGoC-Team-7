@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application/pages/search_page.dart';
 import 'package:flutter_application/pages/map.dart';
 import 'package:flutter_application/pages/profile_history.dart';
 
@@ -18,7 +18,6 @@ class _HomePageState extends State<HomePage> {
       _isExpanded = !_isExpanded;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +87,15 @@ class _HomePageState extends State<HomePage> {
 
   Container _searchBar() {
     return Container(
-          margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SearchPage()),
+          );
+        },
+        child: AbsorbPointer( // Prevents keyboard from appearing
           child: TextField(
             decoration: InputDecoration(
               filled: true,
@@ -100,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                 child: Icon(
                   Icons.search,
                   size: 30,
-                )
+                ),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -108,8 +115,11 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-        );
+        ),
+      ),
+    );
   }
+
 
   Container _centralBox() {
     return Container(

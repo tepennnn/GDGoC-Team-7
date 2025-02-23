@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_application/pages/home.dart';
+
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -7,7 +9,8 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: topBar(),
+        appBar: topBar(context),
+
         body: Column(
           children: [
             SearchBar(autoFocus: true),
@@ -58,7 +61,7 @@ class SearchPage extends StatelessWidget {
           ]);
   }
 
-  AppBar topBar() {
+  AppBar topBar(BuildContext context) {
     return AppBar(
         title: Placeholder(
           child: Text("SavvyCart"),
@@ -66,7 +69,10 @@ class SearchPage extends StatelessWidget {
         centerTitle: true,
         leading: GestureDetector(
             onTap: () {
-              print("back");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
             },
             child: Container(
                 margin: EdgeInsets.all(10),
