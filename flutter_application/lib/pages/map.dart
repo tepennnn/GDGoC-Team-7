@@ -14,6 +14,7 @@ class _MapPageState extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Map page'),
+        automaticallyImplyLeading: false,
       ),
       bottomNavigationBar: CustomNavBar(selectedIndex: 1),
     );

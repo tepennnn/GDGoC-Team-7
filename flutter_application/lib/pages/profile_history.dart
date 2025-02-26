@@ -2,22 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/pages/home.dart';
 import 'package:flutter_application/pages/map.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Application',
-      home: const ProfilePage(),
-    );
-  }
-}
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -31,6 +15,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile Page'),
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Column(

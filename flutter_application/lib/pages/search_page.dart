@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_application/pages/home.dart';
 
-
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: topBar(context),
-
-        body: Column(
-          children: [
-            SearchBar(autoFocus: true),
-            SizedBox(height: 10),
-            recommendation()
-          ],
-        ));
+      appBar: topBar(context),
+      body: Column(
+        children: [
+          SearchBar(autoFocus: true),
+          SizedBox(height: 10),
+          recommendation(),
+        ],
+      ),
+    );
   }
 
   Column recommendation() {
@@ -32,8 +31,7 @@ class SearchPage extends StatelessWidget {
                 ))),
         Row(
           children: [
-            Expanded(
-                child: itemBox(1)),
+            Expanded(child: itemBox(1)),
             Expanded(
               child: itemBox(2),
             ),
@@ -48,17 +46,19 @@ class SearchPage extends StatelessWidget {
 
   Column itemBox(int number) {
     return Column(children: [
-            Container(
-                margin: EdgeInsets.fromLTRB(0,10,0,0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xffF7F8F8)),
-                height: 100,
-                width: 100,
-                alignment: Alignment.center,
-                child: Placeholder()),
-            Text("Item $number",)
-          ]);
+      Container(
+          margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Color(0xffF7F8F8)),
+          height: 100,
+          width: 100,
+          alignment: Alignment.center,
+          child: Placeholder()),
+      Text(
+        "Item $number",
+      )
+    ]);
   }
 
   AppBar topBar(BuildContext context) {
@@ -69,7 +69,7 @@ class SearchPage extends StatelessWidget {
         centerTitle: true,
         leading: GestureDetector(
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => HomePage()),
               );
