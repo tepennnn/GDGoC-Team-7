@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/pages/search_page.dart';
 import 'package:flutter_application/pages/map.dart';
 import 'package:flutter_application/pages/profile_history.dart';
+import 'package:flutter_application/pages/camera.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,8 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  // Parameter for camera button 
+  // Parameter for camera button
   bool _isExpanded = false;
   void _toggleMenu() {
     setState(() {
@@ -33,13 +33,11 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 50),
         ],
       ),
-
       floatingActionButton: SizedBox(
         width: 380, // Adjust width to fit multiple buttons
         height: 200, // Adjust height for spacing
         child: _scanningButton(),
       ),
-
       bottomNavigationBar: CustomNavBar(selectedIndex: 0),
     );
   }
@@ -51,23 +49,27 @@ class _HomePageState extends State<HomePage> {
         if (_isExpanded) ...[
           // Camera Button
           Positioned(
-            bottom: 65,  // Adjusted spacing above main button
-            right: 120,   
+            bottom: 65,
+            right: 120,
             child: FloatingActionButton(
-              heroTag: "camera", 
+              heroTag: "camera",
               onPressed: () {
-                print("Camera Clicked!");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CameraScreen()), // Open Camera Page
+                );
               },
               backgroundColor: Colors.blue,
               child: Icon(Icons.camera_alt),
             ),
           ),
-          // Menu Button (Above Camera Button)
+          // Menu Button
           Positioned(
-            bottom: 65, // Increased spacing to avoid overlap
-            right: 200,   
+            bottom: 65,
+            right: 200,
             child: FloatingActionButton(
-              heroTag: "menu", 
+              heroTag: "menu",
               onPressed: () {
                 print("Menu Clicked!");
               },
@@ -95,7 +97,8 @@ class _HomePageState extends State<HomePage> {
             MaterialPageRoute(builder: (context) => SearchPage()),
           );
         },
-        child: AbsorbPointer( // Prevents keyboard from appearing
+        child: AbsorbPointer(
+          // Prevents keyboard from appearing
           child: TextField(
             decoration: InputDecoration(
               filled: true,
@@ -120,81 +123,85 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
   Container _centralBox() {
     return Container(
-            width: 400,
-            height: 350,
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: Colors.white,
-              shape: BoxShape.rectangle,
-            ),
-            child: Column(
-              children: [
-                // Cart Bar
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Icons.shopping_cart,size: 40,),
-                      Text(
-                        ' My Cart',
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                  ],
+      width: 400,
+      height: 350,
+      margin: EdgeInsets.all(20),
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(40),
+        color: Colors.white,
+        shape: BoxShape.rectangle,
+      ),
+      child: Column(
+        children: [
+          // Cart Bar
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(
+                Icons.shopping_cart,
+                size: 40,
+              ),
+              Text(
+                ' My Cart',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w900,
                 ),
-                // Add item button
-                Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: ElevatedButton(
-                      onPressed: (){print('Adding Items');},
-                      child: Text('+ Add Items')
-                    ),
-                  ),
-                ),
-              ],
+              ),
+            ],
+          ),
+          // Add item button
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: ElevatedButton(
+                  onPressed: () {
+                    print('Adding Items');
+                  },
+                  child: Text('+ Add Items')),
             ),
-          );
+          ),
+        ],
+      ),
+    );
   }
 
   Column _categories() {
     return Column(
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Text(
-                  'CATEGORIES',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Text(
+              'CATEGORIES',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(Icons.circle_outlined, size: 70, color: Color.fromARGB(255, 216, 216, 216)),
-                Icon(Icons.circle_outlined, size: 70, color: Color.fromARGB(255, 216, 216, 216)),
-                Icon(Icons.circle_outlined, size: 70, color: Color.fromARGB(255, 216, 216, 216)),
-                Icon(Icons.circle_outlined, size: 70, color: Color.fromARGB(255, 216, 216, 216)),
-              ],
-            ),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Icon(Icons.circle_outlined,
+                size: 70, color: Color.fromARGB(255, 216, 216, 216)),
+            Icon(Icons.circle_outlined,
+                size: 70, color: Color.fromARGB(255, 216, 216, 216)),
+            Icon(Icons.circle_outlined,
+                size: 70, color: Color.fromARGB(255, 216, 216, 216)),
+            Icon(Icons.circle_outlined,
+                size: 70, color: Color.fromARGB(255, 216, 216, 216)),
           ],
-        );
+        ),
+      ],
+    );
   }
-
-
 
   AppBar appBar() {
     return AppBar(
@@ -208,7 +215,6 @@ class _HomePageState extends State<HomePage> {
       centerTitle: true,
     );
   }
-
 }
 
 // Custom Bottom Navigation Bar

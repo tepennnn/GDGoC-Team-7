@@ -62,7 +62,8 @@ class MyApp extends StatelessWidget {
             borderRadius: BorderRadius.circular(12.0),
             borderSide: BorderSide(color: AppColors.darkSpringGreen),
           ),
-          contentPadding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
+          contentPadding:
+              EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
         ),
       ),
       initialRoute: '/',

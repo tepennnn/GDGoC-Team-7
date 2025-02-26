@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.17
   carousel_slider: ^5.0.0
+  camera: ^0.11.1
   
 
 dev_dependencies:
